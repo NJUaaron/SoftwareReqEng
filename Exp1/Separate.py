@@ -1,31 +1,25 @@
-# import csv
 import pandas as pd
 import numpy as np
 import spacy
+
 nlp = spacy.load("en_core_web_sm")
 
+df = pd.read_csv('raw.csv', error_bad_lines = False, encoding='utf8')
+fp = open('word.csv','w+', encoding='utf8')
 
-df = pd.read_csv('raw.csv', header = None, error_bad_lines = False, encoding='gb18030')
-# df.columns = ['num', 'title', 'text']
-# print(df)
-# print()
 for i in range(len(df)):
     words = []
-    text = df.iat[i,1] + ',' + df.iat[i,2]
-    doc = nlp(text)
+    content = df.iat[i,1] + ',' + df.iat[i,2]
+    doc = nlp(content)
     for nounc in doc.noun_chunks:
         words.append(nounc.text)
-    # print(words)
-    # print()
-    string = ""
+    print(words)
+    
     for j in range(len(words)):
-        string = string + "".join(words[j]) 
-        string = string + ","
-    string = string[:-1]
-    # print(string)
-    # print()
-    df.iat[i,2] = string
+        fp.write(words[j])
+        if j < len(words)-1:
+            fp.write(',')
+    fp.write('\n')
 
-# print(df)
+fp.close()
 print("Separate words successfully!")
-df.to_csv('word.csv', header = 0, index = 0)
