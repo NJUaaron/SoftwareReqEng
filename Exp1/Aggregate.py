@@ -28,7 +28,8 @@ def aggregate(X, n):
     C = []
     for type in range(n):
         C.append([i for i,x in enumerate(pred) if x == type])
-    print(C)
+        #print("Number: " + str(len(C[type])))
+        #print(C[type])
     print("Kmeans Prediction Complete!")
     return C
 
@@ -47,7 +48,7 @@ def savecsv(Class, n):
         f = open("Classification\\" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
         Class_t = Class[type]
         for index in Class_t:
-            if index + 1 < len(Class_t):
+            if index + 1 < len(L):
                 f.write(L[index + 1])
                 f.write("\n")
         f.close()
@@ -57,7 +58,7 @@ def savecsv(Class, n):
 
 if __name__ == '__main__':
     content = readcsv("vec.csv")
-    ClustersNum = 10
+    ClustersNum = 5
     Class = aggregate(content, ClustersNum)
     savecsv(Class, ClustersNum)
 
