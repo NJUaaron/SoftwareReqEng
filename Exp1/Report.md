@@ -54,7 +54,7 @@
 3. 词转词向量  
     &emsp;&emsp;词转词向量功能实现在Word2vec.py中。文件读取分词文件word.csv，输出词向量文件vec.csv。其中每一行代表一条记录的向量，向量的每个分量之间用逗号隔开。  
 
-4. 聚类
+4. 聚类 <br>
     &emsp;&emsp;聚类功能实现在Aggregate.py中。文件读取词向量文件vec.csv，将所有记录分成若干类，再将raw.csv和word.csv中的信息按照记录分好的类别，存放到不同文件中，每个文件代表一个类别的记录。这些分类文件在classification文件夹中。从raw.csv中分出来的记录以“class数字.csv”的格式存放；从word.csv中分出来的记录以“class_w_数字.csv”的格式存放。
     
 5. 词频分析  
