@@ -19,6 +19,11 @@
 
 ### 四、实验步骤
 1. 爬虫
+    1. 打开Stack Overflow的网站（https://stackoverflow.com/），构造访问问答界面的请求，获取页面内容进行解析。
+    2. 在页面调用开发者工具，查看问题和答案所对应的HTML源码，确定问题和答案所对应的累和标签。
+    3. 利用beautifulsoup模块的select函数进行查找。
+    4. 利用re的compile函数和strinfo的sub函数对筛选后的源码再次筛选，将多余的内容通过正则表达式删去。
+    5. 将处理后的标题、问题和答案输出到文件，文件名为“raw.csv”,格式为每行对应一条问答记录。
 2. 分词
     1. 获得爬虫的文本信息：文件名为“raw.csv”，其格式为每行三列，分别是序号/问题标题/问题答案。
     2. 通过pandas库读入csv文件，将每行的问题标题和答案文本进行字符串拼接。
@@ -35,6 +40,7 @@
 
 ### 五、代码截图
 1. 爬虫
+![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/webcrawler.png)
 2. 分词
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/SeparateCode.PNG)
 
@@ -60,3 +66,5 @@
     * 在分词过程中的可改进之处是：本次分词采用了spacy的名词分词库，倘若可以进一步使用字典分词精细关键字筛选过程，实验结果将更加清晰显著。
     * 实验过程中不仅学习了软件需求工程的内容，更深刻体会到类似软件工程中开发过程的问题，如实验流程安排/时间节点控制/文件接口协议等等。
 * 冯旭晨：
+    * 本次实验学习到了以前很感兴趣的关于爬虫的知识并且自己亲自动手完成了一个简单的爬虫程序
+	* 在Python语言的编写上还不够熟练，写出来的爬虫程序略显笨重，没有体现Python语言的方便性。
