@@ -11,44 +11,55 @@
 * 171860681 冯旭晨（25%）
 
 ### 三、实验思路
-&emsp;&emsp;**Stack Overflow**是开发者进行问答的著名网站，上面存在大量的有关软件开发的优秀问答。如果我们通过其“IDE”标签进行搜索，就能够找到大量的有关IDE的问答（https://stackoverflow.com/questions/tagged/ide）。这些问答也可以作为 Smart IDE 的潜在需求。 <br>
+&emsp;&emsp;**Stack Overflow**是开发者进行问答的著名网站，上面存在大量的有关软件开发的优秀问答。本次实验中我们使用“IDE”作为标签进行搜索，使用爬虫找到所有[IDE相关的问答](https://stackoverflow.com/questions/tagged/ide)。我们将这些问答视为 Smart IDE 的潜在需求。 <br>
 
 &emsp;&emsp;因此，我们通过爬虫抓取这些问答，然后对这些问答进行分析，从而获取可能需求。其中，可能的分析包括：(1)将每个问答作为一个需求，直接对问答进行分类。 (2)对大量的问答文本进行词云分析，提取出若干关键词作为潜在需求。然后再对这些关键词进行分类（聚类）。 
 
 &emsp;&emsp;除了“IDE”，也可以选用其他 Smart IDE 相关的标签进行搜索获取数据。
 
 ### 四、实验步骤
-1. 爬虫
-    1. 打开Stack Overflow的网站（https://stackoverflow.com/），构造访问问答界面的请求，获取页面内容进行解析。
+1. 爬虫  
+    1. 打开[Stack Overflow](https://stackoverflow.com/)，构造访问问答界面的请求，获取页面内容进行解析。
     2. 在页面调用开发者工具，查看问题和答案所对应的HTML源码，确定问题和答案所对应的累和标签。
     3. 利用beautifulsoup模块的select函数进行查找。
     4. 利用re的compile函数和strinfo的sub函数对筛选后的源码再次筛选，将多余的内容通过正则表达式删去。
     5. 将处理后的标题、问题和答案输出到文件，文件名为“raw.csv”,格式为每行对应一条问答记录。
 2. 分词
-    1. 获得爬虫的文本信息：文件名为“raw.csv”，其格式为每行三列，分别是序号/问题标题/问题答案。
-    2. 通过pandas库读入csv文件，将每行的问题标题和答案文本进行字符串拼接。
-    3. 通过spacy库提取字符串中的名词及短语。
-    4. 利用正则表达式去除短语中的冠词/代词/频率副词等。
-    5. 将处理后的分词用逗号分隔并输出到文件，文件名为“word.csv”，其格式为每行对应一条问答记录，列数由单词量决定。
+    1. 获得爬虫的文本信息
+    2. 通过pandas库读入csv文件，将每行的问题标题和答案文本进行字符串拼接
+    3. 通过spacy库提取字符串中的名词及短语
+    4. 利用正则表达式去除短语中的冠词/代词/频率副词等
+    5. 将处理后的分词用逗号分隔并输出到文件，文件名为“word.csv”，其格式为每行对应一条问答记录，列数由单词量决定
 3. 词转词向量
    1. 獲取分詞后的文本信息：文件名“word.csv”，格式為每段落佔一行，每行中的每列為詞語/短語
    2. 將每個詞自csv文件讀取入二維數組，同樣按照每行為段落，每列為詞語/短語
    3. 通過gensim中的word2vec將數據訓練為詞向量，再將每段中的詞向量加總取平均作爲段落向量
    4. 將段落詞向量存入csv文件“vec.csv”，格式為 序號/向量
 4. 聚类
+   1. 聚类采用的是最简单常用的kmeans算法，使用了sklearn中的cluster包
+   2. 从vec.csv文件中读入处理好的段落向量，进行聚类
+   3. 分好类的文本信息存放在classification文件夹中，每一个文件存放一个类别的文本信息
 5. 词云分析
+   1. 首先使用Python自带的collections包中的Counter函数，计算每个单词的词频
+   2. 将词频最高的若干个单词（如30个）按照“单词:词频”的格式输出到txt文件中
+   3. 将txt文件中的词频信息放到在线词云制作网站[WordItOut](http://www.yyyweb.com/demo/inner-show/word-itout.html)上，生成最终的词云
 
-### 五、代码截图
-1. 爬虫
-![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/webcrawler.png)
-2. 分词
+### 五、代码说明
+1. 爬虫  
+    爬虫功能实现在Crawler.py中。爬虫读取Stackoverflow上的信息，将每一条问答作为一条记录，存放在raw.csv中，其中每一行代表一条记录，格式为每行三列，分别是序号/问题标题/问题答案。  
+    ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/webcrawler.png)
+2. 分词  
+    分词功能实现在Separate.py中。文件读取raw.csv，输出分词文件word.csv。其中每一行代表一条记录，记录中的分好的单词之间用逗号隔开。  
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/SeparateCode.PNG)
 
-3. 词转词向量
+3. 词转词向量  
+    词转词向量功能实现在Word2vec.py中。文件读取分词文件word.csv，输出词向量文件vec.csv。其中每一行代表一条记录的向量，向量的每个分量之间用逗号隔开。  
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/word2vec.png)
 
 4. 聚类
-5. 词云分析
+    聚类功能实现在Aggregate.py中。文件读取词向量文件vec.csv，将所有记录分成若干类，再将raw.csv和word.csv中的信息按照记录分好的类别，存放到不同文件中，每个文件代表一个类别的记录。这些分类文件在classification文件夹中。从raw.csv中分出来的记录以“class数字.csv”的格式存放；从word.csv中分出来的记录以“class_w_数字.csv”的格式存放。
+5. 词频分析  
+    聚类功能实现在Frequency.py中。文件读取分类文件class_w_数字.csv，输出该文件中出现次数最多的若干单词及其词频，以“class_w_数字_c.txt”的格式存放在classification文件夹中。
 
 ### 六、实验结果
 1. 词云分析
@@ -66,6 +77,6 @@
     * 在分词过程中的可改进之处是：本次分词采用了spacy的名词分词库，倘若可以进一步使用字典分词精细关键字筛选过程，实验结果将更加清晰显著。
     * 实验过程中不仅学习了软件需求工程的内容，更深刻体会到类似软件工程中开发过程的问题，如实验流程安排/时间节点控制/文件接口协议等等。
 * 冯旭晨：
-    * 本次实验学习到了以前很感兴趣的关于爬虫的知识并且自己亲自动手完成了一个简单的爬虫程序。
-    * 在Python语言的编写上还不够熟练，写出来的爬虫程序略显笨重，没有体现Python语言的方便性。
+    * 本次实验学习到了以前很感兴趣的关于爬虫的知识并且自己亲自动手完成了一个简单的爬虫程序
+	* 在Python语言的编写上还不够熟练，写出来的爬虫程序略显笨重，没有体现Python语言的方便性。
     * 由于在Stack Overflow上对IDE搜索后只有约500条问答，收集到的信息数量比较少，最后得出的吻戏结果可能无法做到完全准确。

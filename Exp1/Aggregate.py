@@ -33,7 +33,7 @@ def aggregate(X, n):
     print("Kmeans Prediction Complete!")
     return C
 
-def savecsv(Class, n):
+def savewordcsv(Class, n):
     #Read raw file
     rawFile = open("word.csv", encoding='utf8')
     rawDocument = rawFile.read()
@@ -52,14 +52,36 @@ def savecsv(Class, n):
                 f.write("\n")
         f.close()
 
-    print("Seperate Output Complete!")
+    print("Seperate Word Output Complete!")
+
+def savereadcsv(Class, n):
+    #Read raw file
+    rawFile = open("raw.csv", encoding='utf8')
+    rawDocument = rawFile.read()
+    rawFile.close()
+
+    #Line List
+    L = rawDocument.split('\n')
+
+    #Seperate raw data into different csv file by Class
+    for type in range(n):
+        saveFileName = "class"
+        f = open("Classification\\" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
+        for index in Class[type]:
+            if index + 1 < len(L):
+                f.write(L[index + 1])
+                f.write("\n")
+        f.close()
+
+    print("Seperate Read Output Complete!")
 
 
 if __name__ == '__main__':
     content = readcsv("vec.csv")
     ClustersNum = 5
     Class = aggregate(content, ClustersNum)
-    savecsv(Class, ClustersNum)
+    savewordcsv(Class, ClustersNum)
+    savereadcsv(Class, ClustersNum)
 
     # plt.scatter(x0[:, 0], x0[:, 1], c = "red", marker='o', label='label0')
     # plt.scatter(x1[:, 0], x1[:, 1], c = "green", marker='*', label='label1')

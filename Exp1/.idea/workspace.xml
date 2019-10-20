@@ -14,8 +14,8 @@
       <file leaf-file-name="Separate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Separate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="25" />
+            <state relative-caret-position="552">
+              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file leaf-file-name="Aggregate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Aggregate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="26" />
+            <state relative-caret-position="920">
+              <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="30" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -55,21 +55,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Frequency.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Frequency.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Frequency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="207">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="class_w_0_c.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="class_w_0_c.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classification/class_w_0_c.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="414">
+              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -81,8 +81,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.csv" />
-        <option value="$PROJECT_DIR$/Aggregate.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Aggregate.py" />
         <option value="$PROJECT_DIR$/Frequency.py" />
       </list>
     </option>
@@ -315,6 +315,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Classification/class_w_0_c.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -325,8 +333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Separate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="552">
+          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -343,8 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Aggregate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="26" />
+        <state relative-caret-position="920">
+          <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="30" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -353,16 +361,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frequency.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classification/class_w_0_c.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="207">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding />
         </state>
       </provider>

@@ -14,12 +14,14 @@ def readcsv(filePath):
 
 
 if __name__ == '__main__':
+    #输入的分词文件
     fileName = "class_w_0"
     words = readcsv("Classification//" + fileName + ".csv")
     counter = Counter(words)
 
-    # 打印前20高频词
-    commonWords = counter.most_common(20)
+    # 打印前若干个高频词
+    printNum = 30   #打印的高频词数量
+    commonWords = counter.most_common(printNum)
     print(commonWords)
     with open("Classification//" + fileName + "_c.txt", 'w') as f:
         for pair in commonWords:
