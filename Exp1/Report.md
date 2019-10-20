@@ -62,15 +62,15 @@
 
 ### 六、实验结果
 1. 词云分析
-    * class0: IDE / code / Eclipse / NetBeans / Delphi / Lazarus / Emacs / Visual Studio / Python / Java / Windows / Linux / Project / Problem
+    * class0: IDE / code / Eclipse / NetBeans / Delphi / Lazarus / Emacs / Visual Studio / Python / Java / Windows / Linux / Project / Problem <br>
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/WordCloud0.png)
-    * class1: IDE / code / Eclipse / NetBeans / Delphi / Editor / time / plugin / Android / Vim 
+    * class1: IDE / code / Eclipse / NetBeans / Delphi / Editor / time / plugin / Android / Vim <br>
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/WordCloud1.png)
-    * class2: IDE / code / Eclipse / NetBeans / Emacs / Visual Studio / Selenium IDE / Windows / Linux / debugger / error / Java / Python / example
+    * class2: IDE / code / Eclipse / NetBeans / Emacs / Visual Studio / Selenium IDE / Windows / Linux / debugger / error / Java / Python / example <br>
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/WordCloud2.png)
-    * class3: IDE / code / Eclipse / Emacs / Vim / Java / error / command / command-line / folder / files / method / application
+    * class3: IDE / code / Eclipse / Emacs / Vim / Java / error / command / command-line / folder / files / method / application <br>
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/WordCloud3.png)
-    * class4: IDE / code / Eclipse / NetBeans / Visual Studio / Python / Java / Windows / app / program / project / files / case / example 
+    * class4: IDE / code / Eclipse / NetBeans / Visual Studio / Python / Java / Windows / app / program / project / files / case / example <br>
 ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/WordCloud4.png)
 
 2. 需求分类
