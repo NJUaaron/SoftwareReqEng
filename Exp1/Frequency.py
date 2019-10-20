@@ -14,8 +14,14 @@ def readcsv(filePath):
 
 
 if __name__ == '__main__':
-    words = readcsv("Classification//class_w_0.csv")
+    fileName = "class_w_0"
+    words = readcsv("Classification//" + fileName + ".csv")
     counter = Counter(words)
 
     # 打印前20高频词
-    print(counter.most_common(20))
+    commonWords = counter.most_common(20)
+    print(commonWords)
+    with open("Classification//" + fileName + "_c.txt", 'w') as f:
+        for pair in commonWords:
+            f.write(pair[0] + ":" + str(pair[1]) + "\n")
+    print("Save Frequency Complete!")

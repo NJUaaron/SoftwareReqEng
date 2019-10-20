@@ -1,0 +1,20 @@
+IDE:163
+which:82
+code:53
+Eclipse:49
+project:37
+NetBeans:37
+them:36
+Windows:36
+problem:32
+thing:28
+Delphi:27
+Lazarus:26
+Java:24
+Emacs:23
+Netbeans:23
+Linux:22
+Visual Studio:22
+lot:20
+way:19
+Python:19
