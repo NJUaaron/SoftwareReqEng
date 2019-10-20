@@ -10,12 +10,11 @@
 * 171860663 马少聪（25%）
 * 171860681 冯旭晨（25%）
 
-### 三、实验思路
-&emsp;&emsp;**Stack Overflow**是开发者进行问答的著名网站，上面存在大量的有关软件开发的优秀问答。本次实验中我们使用“IDE”作为标签进行搜索，使用爬虫找到所有[IDE相关的问答](https://stackoverflow.com/questions/tagged/ide)。我们将这些问答视为 Smart IDE 的潜在需求。 <br>
+### 三、实验思路 
+&emsp;&emsp;**Stack Overflow**是开发者进行问答的著名网站，上面存在大量的有关软件开发的优秀问答。本次实验中我们用“IDE”作为标签进行搜索，使用爬虫找到所有[IDE相关的问答](https://stackoverflow.com/questions/tagged/ide)。我们将网站上的每一个问答视为一个 Smart IDE 的潜在需求，直接对问答进行分类。分类完成后，我们再对每一类文本进行词云分析，提取出若干关键字作为参考，帮助并对每一类进行分析，探究不同类别需求之间的异同。
 
-&emsp;&emsp;因此，我们通过爬虫抓取这些问答，然后对这些问答进行分析，从而获取可能需求。其中，可能的分析包括：(1)将每个问答作为一个需求，直接对问答进行分类。 (2)对大量的问答文本进行词云分析，提取出若干关键词作为潜在需求。然后再对这些关键词进行分类（聚类）。 
+&emsp;&emsp;要完成以上任务，我们需要依次实现爬虫、分类和词云的功能。其中分类步骤是比较困难的，选择不同的分类方法难度迥异，且最后的分类效果也千差万别。本次实验中我们尝试使用与传统的邮件分类相似的方法————先分词，再将词转换成词向量，然后得到段落的向量，最后再用聚类方法按照向量在高维词空间中的分布对需求进行划分。
 
-&emsp;&emsp;除了“IDE”，也可以选用其他 Smart IDE 相关的标签进行搜索获取数据。
 
 ### 四、实验步骤
 1. 爬虫  
@@ -47,17 +46,16 @@
 ### 五、代码说明
 1. 爬虫  
     爬虫功能实现在Crawler.py中。爬虫读取Stackoverflow上的信息，将每一条问答作为一条记录，存放在raw.csv中，其中每一行代表一条记录，格式为每行三列，分别是序号/问题标题/问题答案。  
-    ![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/webcrawler.png)
+
 2. 分词  
     分词功能实现在Separate.py中。文件读取raw.csv，输出分词文件word.csv。其中每一行代表一条记录，记录中的分好的单词之间用逗号隔开。  
-![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/SeparateCode.PNG)
 
 3. 词转词向量  
     词转词向量功能实现在Word2vec.py中。文件读取分词文件word.csv，输出词向量文件vec.csv。其中每一行代表一条记录的向量，向量的每个分量之间用逗号隔开。  
-![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp1/Pictures/word2vec.png)
 
 4. 聚类
     聚类功能实现在Aggregate.py中。文件读取词向量文件vec.csv，将所有记录分成若干类，再将raw.csv和word.csv中的信息按照记录分好的类别，存放到不同文件中，每个文件代表一个类别的记录。这些分类文件在classification文件夹中。从raw.csv中分出来的记录以“class数字.csv”的格式存放；从word.csv中分出来的记录以“class_w_数字.csv”的格式存放。
+    
 5. 词频分析  
     聚类功能实现在Frequency.py中。文件读取分类文件class_w_数字.csv，输出该文件中出现次数最多的若干单词及其词频，以“class_w_数字_c.txt”的格式存放在classification文件夹中。
 
