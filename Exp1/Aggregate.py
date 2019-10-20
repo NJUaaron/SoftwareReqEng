@@ -35,7 +35,7 @@ def aggregate(X, n):
 
 def savecsv(Class, n):
     #Read raw file
-    rawFile = open("raw.csv", encoding='utf8')
+    rawFile = open("word.csv", encoding='utf8')
     rawDocument = rawFile.read()
     rawFile.close()
 
@@ -44,10 +44,9 @@ def savecsv(Class, n):
 
     #Seperate raw data into different csv file by Class
     for type in range(n):
-        saveFileName = "class"
+        saveFileName = "class_w_"
         f = open("Classification\\" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
-        Class_t = Class[type]
-        for index in Class_t:
+        for index in Class[type]:
             if index + 1 < len(L):
                 f.write(L[index + 1])
                 f.write("\n")
