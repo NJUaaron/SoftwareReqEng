@@ -35,7 +35,7 @@ def aggregate(X, n):
 
 def savewordcsv(Class, n):
     #Read raw file
-    rawFile = open("word.csv", encoding='utf8')
+    rawFile = open("..//Data//word.csv", encoding='utf8')
     rawDocument = rawFile.read()
     rawFile.close()
 
@@ -45,7 +45,7 @@ def savewordcsv(Class, n):
     #Seperate raw data into different csv file by Class
     for type in range(n):
         saveFileName = "class_w_"
-        f = open("Classification\\" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
+        f = open("..//Classification//" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
         for index in Class[type]:
             if index + 1 < len(L):
                 f.write(L[index + 1])
@@ -56,7 +56,7 @@ def savewordcsv(Class, n):
 
 def savereadcsv(Class, n):
     #Read raw file
-    rawFile = open("raw.csv", encoding='utf8')
+    rawFile = open("..//Data//raw.csv", encoding='utf8')
     rawDocument = rawFile.read()
     rawFile.close()
 
@@ -66,7 +66,7 @@ def savereadcsv(Class, n):
     #Seperate raw data into different csv file by Class
     for type in range(n):
         saveFileName = "class"
-        f = open("Classification\\" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
+        f = open("..//Classification//" + saveFileName + str(type) + ".csv", 'w', encoding='utf8')
         for index in Class[type]:
             if index + 1 < len(L):
                 f.write(L[index + 1])
@@ -77,7 +77,7 @@ def savereadcsv(Class, n):
 
 
 if __name__ == '__main__':
-    content = readcsv("vec.csv")
+    content = readcsv("..//Data//vec.csv")
     ClustersNum = 5
     Class = aggregate(content, ClustersNum)
     savewordcsv(Class, ClustersNum)
