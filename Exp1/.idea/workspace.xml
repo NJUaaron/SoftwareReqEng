@@ -26,8 +26,8 @@
       <file leaf-file-name="Word2Vector.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/Word2Vector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+            <state relative-caret-position="207">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -121,6 +121,11 @@
             <path>
               <item name="Exp1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Exp1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Exp1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Exp1" type="462c0819:PsiDirectoryNode" />
+              <item name="Classification" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Exp1" type="b2602c69:ProjectViewProjectNode" />
@@ -271,9 +276,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2560175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2560175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32590234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -467,8 +471,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/Word2Vector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        <state relative-caret-position="207">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
