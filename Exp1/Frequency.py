@@ -4,7 +4,7 @@ from collections import Counter
 
 def readcsv(filePath):
     wordList = []
-    with open(filePath, 'r') as f:
+    with open(filePath, 'r', encoding='utf8') as f:
         for line in f:
             for d in line.split(','):
                 if d != '\n':
@@ -15,7 +15,7 @@ def readcsv(filePath):
 
 if __name__ == '__main__':
     #输入的分词文件
-    fileName = "class_w_0"
+    fileName = "class_w_4"
     words = readcsv("Classification//" + fileName + ".csv")
     counter = Counter(words)
 

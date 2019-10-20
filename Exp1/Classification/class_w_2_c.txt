@@ -1,0 +1,30 @@
+IDE:169
+which:89
+code:56
+Eclipse:49
+them:36
+NetBeans:36
+project:31
+Windows:31
+thing:30
+problem:25
+Netbeans:24
+Visual Studio:21
+Selenium IDE:21
+Linux:20
+Java:20
+editor:19
+way:18
+one:17
+Python:17
+Thanks:16
+example:15
+things:15
+anyone:15
+everything:15
+Emacs:15
+eclipse:15
+debugger:15
+class:15
+error:15
+lot:14

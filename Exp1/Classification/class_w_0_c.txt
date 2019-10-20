@@ -1,20 +1,30 @@
-IDE:163
-which:82
-code:53
-Eclipse:49
-project:37
-NetBeans:37
-them:36
-Windows:36
-problem:32
-thing:28
-Delphi:27
-Lazarus:26
-Java:24
-Emacs:23
-Netbeans:23
-Linux:22
-Visual Studio:22
-lot:20
-way:19
-Python:19
+IDE:81
+which:38
+Eclipse:32
+anyone:21
+RubyMine:15
+thing:14
+them:14
+NetBeans:11
+Selenium IDE:11
+project:10
+code:10
+array:10
+solution:10
+eclipse:9
+Netbeans:9
+plugin:9
+Spyder IDE:9
+problem:9
+objects:9
+Ruby:9
+Visual Studio:8
+editor:8
+self:7
+link:7
+list:7
+example:7
+Windows:7
+Thanks:7
+files:7
+Rubymine:7
