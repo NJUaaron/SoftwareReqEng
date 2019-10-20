@@ -1,2 +1,0 @@
-It is created for creating a folder named Pictures.
-It will be removed recently.
