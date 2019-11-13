@@ -12,6 +12,7 @@ from os import listdir
 
 
 LabeledSentence = gensim.models.doc2vec.LabeledSentence  # 句標簽
+# TaggedDoc = gensim.models.doc2vec.TaggedLineDocument #句標簽
 
 
 # 文檔集合訓練模型
@@ -22,11 +23,11 @@ class LabeledLineSentence(object):
 
     def __iter__(self):  # 迭代器
         for i, doc in enumerate(self.doc_list):
-            yield LabeledSentence(words=paragraph[i].split(), labels=[self.labels_list[i]])
-
+            # print(paragraph[i].split())
+            yield LabeledSentence(words=paragraph[i].split(" "), tags=[self.labels_list[i]])
 
 # 先把所有文档的路径存进一个 array 中，docs：
-docs = [f for f in listdir("./Data/Word") if f.endswith('.csv')]
+docs = [f for f in listdir("../Data/word") if f.endswith('.csv')]
 
 
 # 把所有文档的内容存入到 paragraph 中，重要度存入標簽：
@@ -36,9 +37,10 @@ for doc in docs:
 
     docLabels = []
     paragraph = []
+    words = []
 
     # 讀文件
-    file = open(doc, 'r', encoding='utf8')
+    file = open("../Data/word/"+doc, 'r', encoding='utf8')
     # data.append(open("./" + doc, 'r',encoding='utf8')) # append接續在列表末尾，不換行
     # 讀入格式 序號，分詞結果字符串，等級
     raw_doc = file.read()
@@ -49,27 +51,23 @@ for doc in docs:
     List = raw_doc.split('\n')  # 先按行分割
     for i in range(len(List)):
         List[i] = List[i].split(',')  # 按逗號分割
-        print(List[i])
+        # print(List[i])
         docLabels.append(List[i][2])  # 把重要度當作標簽
         paragraph.append(List[i][1])  # 把段落存入數組
+        words.append(paragraph[i].split(" "))
         count = i #計算段落數
+        # print( i)
     # return List
 
     #標簽化
-    it = LabeledLineSentence(paragraph, docLabels)
+    sentence = LabeledLineSentence(paragraph, docLabels)
 
-    model = gensim.models.Doc2Vec(size=50, window=10, min_count=5, alpha=0.025, min_alpha=0.025)
+    model = gensim.models.Doc2Vec(sentence,vector_size=50, window=10, min_count=2) #
     # dbow (distributed bag of words) dm = 0
     # dm (distributed memory) dm = 1
-    model.build_vocab(it)  # 建立句向量模型
-
-    for epoch in range(10):  # 訓練模型迭代十次?
-        model.train(it)
-        model.alpha -= 0.002  # decrease the learning rate
-        model.min_alpha = model.alpha  # fix the learning rate, no deca
-        model.train(it)
 
     print('Model Build Complete! Model shape : ', model.wv.syn0.shape)
+    vector_amount = model.wv.syn0.shape[0]
     for i in range(model.wv.syn0.shape[0]):
         print(model.wv.index2word[i])
 
@@ -78,11 +76,22 @@ for doc in docs:
     # model.similar_by_vector('''' "Document name" ''')
 
     ''' Save to CSV '''
-    filename = idx +".csv"
-    f = open("./Data/"+ filename, 'wb')
-    for num in range(0, count):
-        doc_vec = model.docvecs[num]
-        f.write(doc_vec)
+    filename = str(idx) +".csv"
+    f = open("../Data/vec/"+ filename, 'w')
+    for num in range(count+1):
+        # model.docvecs[num] 得到已訓練文檔的向量
+
+        # 使用infer_vector来推理文档的向量(输入text仍然是文档的分词列表)：
+        # print(words[num])
+        # print(num)
+        doc_vec = model.infer_vector(words[num])
+        for i in range(len(doc_vec)):
+            if i != 0:
+                f.write(',')
+            f.write(str(doc_vec[i]))
+        f.write("\n")
+        # print(str(doc_vec))
+
         # print num
         # print doc_vec
     f.close()
