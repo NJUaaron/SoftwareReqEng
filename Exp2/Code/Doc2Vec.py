@@ -27,7 +27,7 @@ class LabeledLineSentence(object):
             yield LabeledSentence(words=paragraph[i].split(" "), tags=[self.labels_list[i]])
 
 # 先把所有文档的路径存进一个 array 中，docs：
-docs = [f for f in listdir("../Data/word") if f.endswith('.csv')]
+docs = [f for f in listdir("../Data/Word") if f.endswith('.csv')]
 
 
 # 把所有文档的内容存入到 paragraph 中，重要度存入標簽：
@@ -40,7 +40,7 @@ for doc in docs:
     words = []
 
     # 讀文件
-    file = open("../Data/word/"+doc, 'r', encoding='utf8')
+    file = open("../Data/Word/"+doc, 'r', encoding='utf8')
     # data.append(open("./" + doc, 'r',encoding='utf8')) # append接續在列表末尾，不換行
     # 讀入格式 序號，分詞結果字符串，等級
     raw_doc = file.read()
@@ -77,21 +77,18 @@ for doc in docs:
 
     ''' Save to CSV '''
     filename = str(idx) +".csv"
-    f = open("../Data/vec/"+ filename, 'w')
+    f = open("../Data/Vec/"+ filename, 'w')
     for num in range(count+1):
-        # model.docvecs[num] 得到已訓練文檔的向量
-
+        # model.docvecs[tag] 用tag得到已訓練文檔的向量
+        if num!=0:
+            f.write("\n")
         # 使用infer_vector来推理文档的向量(输入text仍然是文档的分词列表)：
-        # print(words[num])
-        # print(num)
         doc_vec = model.infer_vector(words[num])
         for i in range(len(doc_vec)):
             if i != 0:
                 f.write(',')
             f.write(str(doc_vec[i]))
-        f.write("\n")
         # print(str(doc_vec))
-
         # print num
         # print doc_vec
     f.close()

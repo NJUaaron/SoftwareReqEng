@@ -19,6 +19,8 @@ for file in files_csv:
     df = pd.read_csv(read_path+'\\'+file, header=None, names=['No','Title','Content','Level'])
     fp = open(save_path+'\\'+file, 'w+', encoding='utf8')
     for i in range(len(df)):
+        if i!=0:
+            fp.write('\n')
         fp.write(df.iat[i, 0].astype(str) + ',')
         text = df.iat[i, 1] + ' '+ df.iat[i, 2]
         disease_List = nltk.word_tokenize(text)
@@ -29,7 +31,7 @@ for file in files_csv:
         Rfiltered = nltk.pos_tag(filtered)
         for j in range(len(Rfiltered)):
             fp.write(Rfiltered[j][0]+' ')
-        fp.write(',' + df.iat[i, 3].astype(str) + '\n')
+        fp.write(',' + df.iat[i, 3].astype(str))
     fp.close()
     print('Seperate ' + read_path+file + ' DONE')
 
