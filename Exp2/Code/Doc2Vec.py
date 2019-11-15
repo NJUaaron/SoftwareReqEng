@@ -31,7 +31,7 @@ docs = [f for f in listdir("../Data/Word") if f.endswith('.csv')]
 
 
 # 把所有文档的内容存入到 paragraph 中，重要度存入標簽：
-idx = 1
+idx = 0
 for doc in docs:
     # 單個文件處理
 
