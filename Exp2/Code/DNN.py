@@ -25,7 +25,7 @@ def readLabel(filePath):
     return yList
 
 def readData(father_path):
-    metrix_read_path = father_path+'\\Data\\Vector'
+    metrix_read_path = father_path+'\\Data\\Vec'
     label_read_path = father_path+'\\Data\\Raw'
 
     files = os.listdir(metrix_read_path)
@@ -61,16 +61,30 @@ if __name__ == '__main__':
     print(y_test)
     '''
 
+    def normalize_cols(m):
+        col_max = m.max(axis=0)
+        col_min = m.min(axis=0)
+        return (m - col_min) / (col_max - col_min)
+
+
+    x_train = np.nan_to_num(normalize_cols(np.array(x_train)))
+    x_test = np.nan_to_num(normalize_cols(np.array(x_test)))
+    y_train = [i/5.0 for i in y_train]
+    y_test = [i/5.0 for i in y_test]
+
     sess = tf.Session()
 
     #x_train = np.nan_to_num(normalize_cols(x_train))
     #x_test = np.nan_to_num(normalize_cols(x_test))
 
-    metrix_num = 4
-    batch_size = 4
-    hidden_layer_nodes1 = 5
-    hidden_layer_nodes2 = 5
-    step_length = 0.005
+    metrix_num = 50
+    batch_size = 50
+    hidden_layer_nodes1 = 30
+    hidden_layer_nodes2 = 15
+    step_length = 0.0002
+    seed = tf.set_random_seed(2019)
+
+    np.random.seed(seed)
 
     x_data = tf.placeholder(shape=[None, metrix_num], dtype=tf.float32)
     y_target = tf.placeholder(shape=[None, 1], dtype=tf.float32)
@@ -94,10 +108,10 @@ if __name__ == '__main__':
 
     loss_vec = []
     test_loss = []
-    for i in range(10):
+    for i in range(20000):
         #First we select a random set of indices for the batch
         rand_index = np.random.choice(len(x_train), size=batch_size)
-        print(rand_index)
+
         #Then we select the training valuses
         rand_x = np.array(x_train)[rand_index]
         rand_y = np.transpose([ np.array(y_train)[rand_index]])
@@ -105,10 +119,12 @@ if __name__ == '__main__':
         sess.run(train_step, feed_dict={x_data: rand_x, y_target: rand_y})
         #We save the training loss
         temp_loss = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
-        loss_vec.append(np.sqrt(temp_loss))
+        loss_vec.append(np.sqrt(abs(temp_loss)))
         #Finally, we run the test-set loss and save it
         test_temp_loss = sess.run(loss, feed_dict={x_data: x_test, y_target: np.transpose([y_test])})
-        test_loss.append(np.sqrt(test_temp_loss))
+        test_loss.append(np.sqrt(abs(test_temp_loss)))
+        if i%100 == 0:
+            print('range'+str(i)+' train loss='+str(temp_loss)+' test loss='+str(test_temp_loss))
 
 
     test_output = sess.run(final_output, feed_dict={x_data: x_test, y_target: np.transpose([y_test])})
@@ -119,7 +135,22 @@ if __name__ == '__main__':
         result_save.write(str(y_test[i]) + ',' + str(test_output_vec[i]) + '\n')
     result_save.close()
     print('result saved.')
-    print('Output completed')
+
+    #Accuracy
+    acc_1 = 0       #<=0.5
+    acc_2 = 0       #<=1
+    acc_3 = 0       #<=1.5
+    for i in range(len(y_test)):
+        error = abs(y_test[i]-test_output_vec[i])
+        if error < 0.1:
+            acc_1 += 1
+        if error < 0.2:
+            acc_2 += 1
+        if error < 0.3:
+            acc_3 += 1
+    print('accuracy1 = '+str(acc_1/len(y_test)))
+    print('accuracy2 = '+str(acc_2/len(y_test)))
+    print('accuracy3 = '+str(acc_3/len(y_test)))
 
     plt.plot(loss_vec, 'k-', label='Train Loss')
     plt.plot(test_loss, 'r--', label='Test Loss')
@@ -128,6 +159,10 @@ if __name__ == '__main__':
     plt.ylabel('Loss')
     plt.legend(loc='upper right')
     plt.show()
+
+
+    print('Output completed')
+
 
 
 
