@@ -1,5 +1,4 @@
 import os
-
 import nltk
 import pandas as pd
 from nltk.corpus import stopwords
@@ -10,16 +9,15 @@ read_path = father_path+'\\Data\\Raw'
 save_path = father_path+'\\Data\\Word'
 
 stopWords = set(stopwords.words('english'))
-# print(stopWords)
 
 files = os.listdir(read_path)
 files_csv = list(filter(lambda x: x[-4:] == '.csv', files))
+
 for file in files_csv:
-    # print(read_path+'\\'+file)
     df = pd.read_csv(read_path+'\\'+file, header=None, names=['No','Title','Content','Level'])
     fp = open(save_path+'\\'+file, 'w+', encoding='utf8')
     for i in range(len(df)):
-        if i!=0:
+        if i != 0:
             fp.write('\n')
         fp.write(df.iat[i, 0].astype(str) + ',')
         text = df.iat[i, 1] + ' '+ df.iat[i, 2]
@@ -33,7 +31,8 @@ for file in files_csv:
             fp.write(Rfiltered[j][0]+' ')
         fp.write(',' + df.iat[i, 3].astype(str))
     fp.close()
-    print('Seperate ' + read_path+file + ' DONE')
+    print('Seperate ' + read_path + '\\' + file + ' DONE')
+print('Seperate successfully!')
 
 """
     for i in range(len(df)):
