@@ -79,7 +79,7 @@
 
 ### 六、实验结果  
 &emsp;&emsp;DNN训练过程中，我们用交叉熵作为损失函数，并记录了每一轮迭代后训练集和测试集各自的交叉熵，记为<font color=red>Train Loss</font>和<font color=red>Test Loss</font>。下图为两者在训练过程中的变化情况。  
-![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp2/Pictures/LossPlot.png)
+![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp2/Pictures/LossPlot.png)  
 &emsp;&emsp;图中横坐标为迭代次数，纵坐标为交叉熵的值。可以看到，随着训练的进行，Train Loss和Test Loss都在持续下降，其中Test Loss下降明显，并在迭代次数为10000次左右趋于平缓，模型达到一个较优的点。  
 &emsp;&emsp;由于DNN预测的结果是一个小数，而不是像原本的优先级一样是一个整数，所以我们需要定义一个阈值X，只要满足：
 ```  
@@ -87,7 +87,7 @@
 ```  
 我们就认为预测值是准确的。  
 &emsp;&emsp;为了更好地展示模型训练出来的结果，我们定义了3种准确率：accuracy1, accuracy2, accuracy3。它们分别是在X = 0.5, X = 1, X = 1.5的情况下计算出来的。以下是我们模型预测结果得到的三种准确率的值。  
-![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp2/Pictures/Accuracy.png)
+![](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp2/Pictures/Accuracy.png)  
 &emsp;&emsp;可见，虽然accuracy1比较低，只有0.3，但是accuracy2和accuracy3都处于较高水平。也就是说，大部分情况下，模型预测的优先级和真实优先级之间的差距不会超过1，可以算是非常令人满意的结果了。
 
 ### 七、反思改进
