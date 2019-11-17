@@ -62,7 +62,7 @@ for doc in docs:
     #標簽化
     sentence = LabeledLineSentence(paragraph, docLabels)
 
-    model = gensim.models.Doc2Vec(sentence,vector_size=50, window=10, min_count=2) #
+    model = gensim.models.Doc2Vec(sentence,vector_size=50, window=10, min_count=5) #
     # dbow (distributed bag of words) dm = 0
     # dm (distributed memory) dm = 1
 
@@ -76,7 +76,7 @@ for doc in docs:
     # model.similar_by_vector('''' "Document name" ''')
 
     ''' Save to CSV '''
-    filename = str(idx) +".csv"
+    filename = "vec"+str(idx) +".csv"
     f = open("../Data/Vec/"+ filename, 'w')
     for num in range(count+1):
         # model.docvecs[tag] 用tag得到已訓練文檔的向量
@@ -92,7 +92,7 @@ for doc in docs:
         # print num
         # print doc_vec
     f.close()
-    print('vecter file'+ filename+' save complete !')
+    print('vecter file : '+ filename+' save complete !')
     # 單個文件處理
 
     idx = idx+1
