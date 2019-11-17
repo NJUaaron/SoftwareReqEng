@@ -115,7 +115,7 @@ if __name__ == '__main__':
         #Train
         loss_vec = []
         test_loss = []
-        for i in range(20000):
+        for i in range(10000):
             #First we select a random set of indices for the batch
             rand_index = np.random.choice(len(x_train), size=batch_size)
 
