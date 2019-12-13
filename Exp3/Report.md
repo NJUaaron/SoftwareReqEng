@@ -20,25 +20,23 @@
 * 给出需求 R 的全生命周期的时间线。
 
 ### 四、实验步骤
-1. Github是目前众多开源项目使用的代码管理平台，该平台具有在线用户多、维护项目多、代码量大、代码管理好、操作简单等优点，其 `Issue / Pull Request / Merge` 机制极大地符合了需求管理的控制流程。基于以上特性，我们选择在Github平台上寻找开源项目进行本次实验。
+1. [**Github**](https://github.com/)是目前众多开源项目使用的代码管理平台，该平台具有在线用户多、维护项目多、代码量大、代码管理好、操作简单等优点，其 `Issue / Pull Request / Merge` 机制极大地符合了需求管理的控制流程。基于以上特性，我们选择在Github平台上寻找开源项目进行本次实验。
 
-2. Visual Studio Code（以下简称VScode）是一个轻量且强大的跨平台开源代码编辑器（IDE），支持Windows，OS X和Linux。内置JavaScript、TypeScript和Node.js支持，而且拥有丰富的插件生态系统，可通过安装插件来支持C++、C#、Python、PHP等其他语言。故我们选择了在Github上的[**Microsoft / VScode**](https://github.com/microsoft/vscode)开源项目作为实验素材。
+2. **Visual Studio Code**（以下简称VScode）是一个轻量且强大的跨平台开源代码编辑器（IDE），支持Windows，OS X和Linux。内置JavaScript、TypeScript和Node.js支持，而且拥有丰富的插件生态系统，可通过安装插件来支持C++、C#、Python、PHP等其他语言。  
+故我们选择了在Github上的[**Microsoft / VScode**](https://github.com/microsoft/vscode)开源项目作为实验素材。
 
-3. 由于要研究开源项目的需求变更，而在Github中的一个需求提出常常是一个带有`feature-request`标签的`Issue`，完成一个需求后将通过`Pull Request`提交实现代码，若经过项目发起者的检验测试后确认该功能已实现便关闭该`Issue`。通过`Pull Request` & `closed` & `feature-request` & `Most Commented`标签选定了[**Code inset feature #66418**](https://github.com/microsoft/vscode/pull/66418)需求。
+3. 由于要研究开源项目的需求变更，而在Github中的一个需求提出常常是一个带有`feature-request`标签的`Issue`，完成一个需求后将通过`Pull Request`提交实现代码，若经过项目发起者的检验测试后确认该功能已实现便关闭该`Issue`。  
+于是我们通过`Pull Request` & `closed` & `feature-request` & `Most Commented`标签选定了[**Code inset feature #66418**](https://github.com/microsoft/vscode/pull/66418)需求。
 
-该需求希望允许HTML文档可以在代码编辑器的给定代码行中嵌入。此功能应作为插件，以支持各种不同的用例情况。该功能在 JS/TS 文件中实现如下：
-    // INLINE
-    某些 url 语句
-并将该 URL 的内容直接嵌入注释行的下方。另一个用例是支持用户体验，如计算笔记本（例如 Jupyter），其中脚本结果在脚本代码内联显示。
-此 PR 是一个 MVP 来说明该功能。
+4. 利用自动化方法（Python数据爬虫）获取该PR中的详细信息，包括需求提出、相关讨论、代码更新情况、相关网络链接、时间信息等。
 
-2. 利用爬虫获取开源项目信息。
-3. 需求变更
-4. 变更代码
-5. 时间线
+5. 通过爬取的信息人工分析该需求的变化过程、相应部分代码更新、需求完成现状等。
+
+6. 根据爬取的信息分析并绘制该需求变更的时间线。
 
 ### 五、需求分析
 1. 初始需求：
-2. 
+
+
 ### 六、实验结果
 
