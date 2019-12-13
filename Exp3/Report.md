@@ -20,11 +20,21 @@
 * 给出需求 R 的全生命周期的时间线。
 
 ### 四、实验步骤
-1. 利用爬虫获取开源项目信息。
-2. 选定[**Microsoft / VScode**](https://github.com/microsoft/vscode)开源项目，并确定其需求文本。
+1. 选定[**Microsoft / VScode**](https://github.com/microsoft/vscode)开源项目的[**Code inset feature #66418**](https://github.com/microsoft/vscode/pull/66418)需求如下。
+
+该需求希望允许HTML文档可以在代码编辑器的给定代码行中嵌入。此功能应作为插件，以支持各种不同的用例情况。该功能在 JS/TS 文件中实现如下：
+    // INLINE
+    某些 url 语句
+并将该 URL 的内容直接嵌入注释行的下方。另一个用例是支持用户体验，如计算笔记本（例如 Jupyter），其中脚本结果在脚本代码内联显示。
+此 PR 是一个 MVP 来说明该功能。
+
+2. 利用爬虫获取开源项目信息。
 3. 需求变更
 4. 变更代码
 5. 时间线
 
-### 五、实验结果
+### 五、需求分析
+1. 初始需求：
+2. 
+### 六、实验结果
 
