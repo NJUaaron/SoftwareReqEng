@@ -39,4 +39,5 @@
 
 
 ### 六、实验结果
+经人工分析后，我们绘制出该需求的变动时间线，跟踪了需求提出的事件、提出者,项目参与者对需求的变更与讨论。该需求仅实现了部分功能，仍有一些提案仍在讨论中。  
 ![时间线](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp3/Figure/Timeline.png)
