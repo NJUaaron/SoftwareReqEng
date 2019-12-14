@@ -39,4 +39,4 @@
 
 
 ### 六、实验结果
-
+[时间线](https://github.com/NJUaaron/SoftwareReqEng/blob/master/Exp3/Figure/Timeline.png)
