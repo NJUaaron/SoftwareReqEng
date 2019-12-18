@@ -35,7 +35,21 @@
 6. 根据爬取的信息分析并绘制该需求变更的时间线。
 
 ### 五、需求分析
-1. 初始需求：
+我们选定需求[**Code inset feature #66418**](https://github.com/microsoft/vscode/pull/66418)，用Python对该需求进完成爬虫后，我们基于爬虫得到的数据进行分析。该issue在2019.1.12由[**rdeline**](https://github.com/rdeline)创建，初始需求是希望vscode实现一个新的feature，允许将HTML文件内嵌在编辑器的代码行中。这个新feature对外提供一些接口供插件调用，从而实现一些各式各样的功能。
+
+在2019.1.24，需求提出者rdeline又提供了一些需求的细节。这个feature需要使用网页预览元件来实现，并且提供代码和网页视图之间的交流渠道。因此，网页视图中托管的JS代码可以发布供扩展程序监听的消息。内联文档扩展可以使用此方法来传达HTML内容的大小。
+
+在2019.2.12，团队完成了[**Code Inset Feature**](https://github.com/microsoft/vscode/pull/66418/commits/066dfef8f70379c9d4d8fbf3d2d4d0a2259c331e)。并在后续做了一些代码上大大少少的修改，完成了需求的基本功能，然后merge到了master上。
+
+随后，在2019.2.13，issue的参与者[**jrieken**](https://github.com/jrieken)指出这个issue还没有被彻底解决，提出了以下2条需要改进的地方：
+
+* Lifecycle - each web view is a process, a single editor cannot have 10s or 100s. We should consider (a) restarting, e.g. only visible insets are running, (b) adding a non-interactive inset, no code execution which would allow for an iframe, (c) limit the number of insets
+
+* API - the current proposal is very much like code lens. The flow is that whenever a text inside the editor changes, we ask for the places at which insets will occur and then we ask to fill those insets. We should study the use-cases but a "push" API might be better. E.g. have something like *createTextEditorInset(editor, position, options)* which an extension calls whenever it wants to add an inset (when a command is invoked or when text changes). The extension will then manage insets as long as the editor exist - this approach is similar to editor decorations.
+
+对于jrieken提出的改进，rdeline在2019.2.14对原始需求进行一些修改以及补充，强调对文本和图像内容展示的优化，以及对interactive inset的支持。此处发生了**需求的变动**。
+
+需求发生变动后，团队对新提出的需求进行了一些讨论，表示支持。之后在2019.6.20完成了[**more code insets API tweaks**](https://github.com/microsoft/vscode/commit/5c3bab92ac05e8e1fb33d77fad154f4314d39f14)，实现了相关的需求。到现在为止，该issue还没有结束，因此需求今后依然可能发生变动。
 
 
 ### 六、实验结果
