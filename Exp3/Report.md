@@ -28,7 +28,7 @@
 3. 由于要研究开源项目的需求变更，而在Github中的一个需求提出常常是一个带有`feature-request`标签的`Issue`，完成一个需求后将通过`Pull Request`提交实现代码，若经过项目发起者的检验测试后确认该功能已实现便关闭该`Issue`。  
 于是我们通过`Pull Request` & `closed` & `feature-request` & `Most Commented`标签选定了[**Code inset feature #66418**](https://github.com/microsoft/vscode/pull/66418)需求。
 
-4. 利用自动化方法（Python数据爬虫）获取该PR中的详细信息，以该PR的标题为文件名，爬取相关讨论的文本信息和代码更新情况，同时提取出讨论中的相关网络链接和时间信息，以时间、文本内容、网络链接三列形成相应的文件，从而进行下一步的人工分析。代码存放于Code文件夹，爬取数据存放于Data文件夹中。
+4. 利用自动化方法（Python数据爬虫）获取该PR中的详细信息，主要功能的实现在lab3_get_content函数中。首先利用title标签找到标题，并以该PR的标题为文件名创建csv文件。接着利用BeautifulSoup的select函数，按照网页源码中的不同的类提取评论的时间和评论文本，分别存放到time变量和result_content变量中。在评论内容中，会出现链接的内容，所以通过正则表达式将文本中的链接提取出来存放到result_url变量中。最后，以时间time、文本内容result_content、网络链接result_url三列形成相应的文件，从而进行下一步的人工分析。代码存放于Code文件夹，爬取的数据存放于Data文件夹中。
 
 5. 通过爬取的信息人工分析该需求的变化过程、相应部分代码更新、需求完成现状等。
 
